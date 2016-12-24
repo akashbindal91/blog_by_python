@@ -1,0 +1,39 @@
+<html>
+
+ <head>
+  <title>BLOG</title>
+ </head>
+
+ <body>
+ 	<h3>ITS A BLOG WITH THE USE OF FLASK AND PYTHON</h3>
+  <form action="/input" method="POST" enctype="multipart/form-data">
+  	<p><textarea name ="blog_title" id = "blog_title" cols = "50" rows="2" placeholder = "SET YOUR TITLE HERE"></textarea></p>
+  	<p><textarea name="blog_content" id="blog_content" cols= "50" rows = "10" placeholder = "WRITE YOUR DATA HERE"></textarea></p>
+  	<p><input type = "file" name = "file" ></p>
+  	<p><input type="submit" name="submt" id="submit" value="SUBMIT"></p>
+  </form>
+  
+  
+  <div>
+
+		{% for row in show %}
+          
+            <h1>{{ row[1] }}</h1>
+            <p>{{ row[2] }}</p>
+            <img style="max-width:400px; max-height=400px;" src="{{ url_for('static', filename=row[4]) }}">
+            <br><hr>
+    {% endfor %}
+  
+  </div>
+ <!--  <input type = "button" name = "previous" value = "PREVIOUS">
+ <input type = "button" name= "next" value= "NEXT"> -->
+
+  {% if (prev_page > 0) %}
+    <a href="/home?page={{ prev_page }}">Previous</a>
+  {% endif %}
+  
+  <a href="/home?page={{ next_page }}">Next</a>
+
+ </body>
+
+</html>
